@@ -1,5 +1,5 @@
 # Grafana
-GBelow Steps will help to create a Grafana using Kube-Prometheus-Stack Operator
+Below Steps will help to create a Grafana using Kube-Prometheus-Stack Operator
 
 # 1. Install Kube-Prometheus-Stack on ubuntu:
 Reference Documentation is as below:  
