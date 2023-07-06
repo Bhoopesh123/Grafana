@@ -16,7 +16,7 @@ Below Steps needs to be followed:
     kubectl config set-context --current --namespace=metrics
 
     helm install grafana prometheus-community/kube-prometheus-stack
-    or you can install with the below command
+        or you can install with the below command
     helm install grafana kube-prometheus-stack/ --debug --create-namespace --namespace metrics --timeout 10m
 
     kubectl config set-context --current --namespace=metrics
