@@ -12,12 +12,11 @@ Below Steps needs to be followed:
 
     helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
     helm repo update
-    helm install grafana prometheus-community/kube-prometheus-stack
+    helm install prod prometheus-community/kube-prometheus-stack
 
     or you can install with the below command
 
     helm pull prometheus-community/kube-prometheus-stack --untar=true
-
     helm install prod kube-prometheus-stack/ --debug --create-namespace --namespace metrics --timeout 10m --dry-run
     kubectl config set-context --current --namespace=metrics
 
