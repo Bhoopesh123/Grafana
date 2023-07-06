@@ -2,7 +2,8 @@
 GBelow Steps will help to create a Grafana using Kube-Prometheus-Stack Operator
 
 # 1. Install Kube-Prometheus-Stack on ubuntu:
-Reference Documentation is as below:
+Reference Documentation is as below:  
+
 https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack
 
 This will installs the kube-prometheus stack, a collection of Kubernetes manifests, Grafana dashboards, and Prometheus rules combined with documentation and scripts to provide easy to operate end-to-end Kubernetes cluster monitoring with Prometheus using the Prometheus Operator.
