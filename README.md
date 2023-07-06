@@ -12,21 +12,14 @@ Below Steps needs to be followed:
 
     helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
     helm repo update
-    helm install prod prometheus-community/kube-prometheus-stack
-
-    or you can install with the below command
-
-    helm pull prometheus-community/kube-prometheus-stack --untar=true
-    helm install prod kube-prometheus-stack/ --debug --create-namespace --namespace metrics --timeout 10m --dry-run
+    kubectl create ns metrics
     kubectl config set-context --current --namespace=metrics
 
-# 2. Change the Default Login Password of Grafana  
+    helm install grafana prometheus-community/kube-prometheus-stack
+    or you can install with the below command
+    helm install grafana kube-prometheus-stack/ --debug --create-namespace --namespace metrics --timeout 10m
 
-Change the adminPassword under kube-prometheus-stack folder section inside values.yaml  
-
-      grafana.adminPassword: xxxx
-
-      helm upgrade prod kube-prometheus-stack/ --debug --create-namespace --namespace metrics --timeout 10m
+    kubectl config set-context --current --namespace=metrics
 
 # 3. Import Node Exporter Full Dashboard  
 
