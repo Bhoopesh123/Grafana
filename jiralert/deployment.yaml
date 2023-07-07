@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jiralert
+  namespace: metrics
+spec:
+  selector:
+    matchLabels:
+      app: jiralert
+  template:
+    metadata:
+      labels:
+        app: jiralert
+    spec:
+      containers:
+      - name: jiralert
+        image: quay.io/app-sre/jiralert:latest
+        imagePullPolicy: Always
+        args:
+        - "--config=/jiralert-config/jiralert.yml"
+        - "--log.level=debug"
+        - "--listen-address=:9097"
+        resources:
+          limits:
+            cpu: 250m
+            memory: 250Mi
+          requests:
+            cpu: 250m
+            memory: 250Mi
+        readinessProbe:
+          tcpSocket:
+            port: 9097
+          initialDelaySeconds: 15
+          periodSeconds: 15
+          timeoutSeconds: 5
+        livenessProbe:
+          tcpSocket:
+            port: 9097
+          initialDelaySeconds: 15
+          periodSeconds: 15
+          timeoutSeconds: 5
+        ports:
+        - containerPort: 9091
+          name: metrics
+        volumeMounts:
+        - mountPath: /jiralert-config
+          name: jiralert-config
+          readOnly: true
+      volumes:
+      - name: jiralert-config
+        secret:
+          secretName: jiralert-config
