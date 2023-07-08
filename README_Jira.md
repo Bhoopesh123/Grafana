@@ -1,7 +1,7 @@
-# Grafana
+# Jira Integration with Grafana
 Below Steps will help to integrate Jira with Grafana for Alert Routing for Kubernetes Cluster
 
-# 1. Install Kube-Prometheus-Stack on ubuntu:
+# 1. Install Jiralert on ubuntu:
 Reference Documentation is as below:  
 
 https://github.com/prometheus-community/jiralert
