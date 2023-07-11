@@ -20,7 +20,8 @@
 Range vector literals work like instant vector literals, except that they select a range of samples back from the current instant.
 Syntactically, a time duration is appended in square brackets ([]) at the end of a vector selector to specify how far back in time values should be fetched for each resulting range vector element.
 
-rate(v range-vector) calculates the per-second average rate of increase of the time series in the range vector
+rate(v range-vector) calculates the per-second average rate of increase of the time series in the range vector  
+
     rate(kubelet_http_requests_total{job="kubelet"}[$__rate_interval])
 
 # Reference Documentation for other Functions:
