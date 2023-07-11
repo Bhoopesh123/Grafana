@@ -3,11 +3,11 @@
     1. To search all of the time series data points in your dashboard, run the following query  
         count({__name__=~".+"}) by (__name__)
 
-    2. count({__name__=~".+"}) by (job)
+    2. To Search all of the time series data points grouping by job
+        count({__name__=~".+"}) by (job)
 
-    3. count({__name__=~".+"}) by (job)
-
-    4. count({__name__=~".+",job="node-exporter"}) by (__name__)
+    4. To Search all of the time series data points grouping by metric for any particular job
+        count({__name__=~".+",job="node-exporter"}) by (__name__)
 
     5. To search for a specific time series point, add the relevant value to the query:
         {__name__=~"node.+"}
