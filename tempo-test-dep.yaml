@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ labels:
+   app: hotrod
+ name: hotrod
+spec:
+ replicas: 1
+ selector:
+   matchLabels:
+     app: hotrod
+ template:
+   metadata:
+     labels:
+       app: hotrod
+   spec:
+     containers:
+       - args:
+           - all
+         env:
+           - name: JAEGER_AGENT_HOST
+             value: tempo.observability
+           - name: JAEGER_AGENT_PORT
+             value: '6831'
+           - name: JAEGER_SAMPLER_TYPE
+             value: const
+           - name: JAEGER_SAMPLER_PARAM
+             value: '1'
+         image: jaegertracing/example-hotrod:1.41.0
+         name: hotrod
+         ports:
+           - containerPort: 8080
+     restartPolicy: Always

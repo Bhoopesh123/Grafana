@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+ labels:
+   app: hotrod
+ name: hotrod
+spec:
+ ports:
+   - name: 'http'
+     port: 8080
+     targetPort: 8080
+ selector:
+   app: hotrod
+ type: ClusterIP

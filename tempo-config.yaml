@@ -1,0 +1,29 @@
+prometheus:
+  prometheusSpec:
+    serviceMonitorSelectorNilUsesHelmValues: false
+    serviceMonitorSelector: {}
+    serviceMonitorNamespaceSelector: {}
+
+grafana:
+  sidecar:
+    datasources:
+      defaultDatasourceEnabled: true
+  additionalDataSources:
+    - name: Loki
+      type: loki
+      url: http://loki.observability.svc.cluster.local:3100
+      access: proxy
+      jsonData:
+          derivedFields:
+            - datasourceUid: tempo
+              matcherRegex: ((\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+))
+              name: TraceID
+              url: $${__value.raw}
+          maxLines: 1000
+      version: 1
+    - name: Tempo
+      type: tempo
+      uid: tempo
+      url: http://tempo.observability.svc.cluster.local:3100
+      access: proxy
+      version: 1
