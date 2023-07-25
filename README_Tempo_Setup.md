@@ -1,5 +1,5 @@
 # Tempo
-Below Steps will help to install Tempo for Tracing for a sample application 
+Below Steps will help to install Tempo for Tracing  a sample application 
 
 
 # 1. Install Loki-Stack  
