@@ -33,7 +33,7 @@ Below Steps needs to be followed:
 Below Steps needs to be followed: 
 
     kubectl apply -f tempo-test-dep.yaml
-    kubectl apply -f tempo-test-svc.yaml
+    kubectl apply -f tempo-test-svc.yamlS
 
 
 

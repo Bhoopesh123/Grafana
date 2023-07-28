@@ -1,0 +1,41 @@
+grafana:
+  grafana.ini:
+    smtp:
+      enabled: true
+      host: smtp.gmail.com:587
+      user: bhoopesh123@gmail.com
+      password: cetojtsoinhqrknn
+      cert_file:
+      key_file:
+      from_address: bhoopesh123@gmail.com
+      from_name: Grafana
+      skip_verify: false
+      ehlo_identity:
+      startTLS_policy:
+
+alertmanager:
+  config:
+      global:
+        resolve_timeout: 5m
+      route:
+        group_by: ['alertname']
+        group_wait: 30s
+        group_interval: 5m
+        repeat_interval: 12h
+        receiver: gmail
+        routes:
+        - receiver: gmail
+          matchers:
+            - alertname =~ "TargetDown|KubeSchedulerDown|Watchdog"
+      receivers:
+      - name: gmail
+        email_configs:
+        - to: bhoopesh123@gmail.com
+          from: bhoopesh123@gmail.com
+          smarthost: smtp.gmail.com:587
+          auth_username: bhoopesh123@gmail.com
+          auth_identity: bhoopesh123@gmail.com
+          auth_password: cetojtsoinhqrknn
+          send_resolved: true
+      templates:
+      - '/etc/alertmanager/config/*.tmpl'
