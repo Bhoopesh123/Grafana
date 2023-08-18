@@ -20,12 +20,13 @@ grafana:
         # Allow Oauth sign-up (Grafana can add authorized users to the internal database)
         GF_AUTH_GENERIC_OAUTH_ALLOW_SIGN_UP : "true"
         # App client ID/Secret
-        GF_AUTH_GENERIC_OAUTH_CLIENT_ID : "6ksm87ud6qkh3cp4qk8p4qvtk2"
-        GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET : "160l5h0horvg7u0hg6d3ndil12j74h2v0q6sld6j7etrj2iu64r3"
+        GF_AUTH_GENERIC_OAUTH_CLIENT_ID : "2su6lf50d5bgaacha2459e4ce3"
+        GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET : "15o4uu6l27liur4nngbh5p2m8gncsk3d5uvsi6hnhh82827ltn9b"
         # Information scope 
         GF_AUTH_GENERIC_OAUTH_SCOPES: email profile aws.cognito.signin.user.admin openid
         # AWS Cognito OAuth endpoints
         GF_AUTH_GENERIC_OAUTH_AUTH_URL: https://test-grafana.auth.ap-south-1.amazoncognito.com/oauth2/authorize
         GF_AUTH_GENERIC_OAUTH_TOKEN_URL: https://test-grafana.auth.ap-south-1.amazoncognito.com/oauth2/token
         GF_AUTH_GENERIC_OAUTH_API_URL: https://test-grafana.auth.ap-south-1.amazoncognito.com/oauth2/userinfo
-        GF_AUTH_SIGNOUT_REDIRECT_URL:  https://test-grafana.auth.ap-south-1.amazoncognito.com/logout?client_id=6ksm87ud6qkh3cp4qk8p4qvtk2&logout_uri=http%3A%2F%2Flocalhost%3A3000%2Flogin%2Fgeneric_oauth                                                      
+        GF_AUTH_SIGNOUT_REDIRECT_URL:  https://test-grafana.auth.ap-south-1.amazoncognito.com/logout?client_id=2su6lf50d5bgaacha2459e4ce3&logout_uri=http%3A%2F%2Flocalhost%3A3000%2Flogin%2Fgeneric_oauth                 
+        GF_AUTH_GENERIC_OAUTH_ROLE_ATTRIBUTE_PATH: ("cognito:groups" | contains([*], 'Admin') && 'Admin' || contains([*], 'Editor') && 'Editor' || 'Viewer')
